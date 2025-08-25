@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: pr_dbt
+    database: test          # catalog in Databricks
+    schema: pr_dbt          # schema
+    tables:
+      - name: raw_customers # table name
+        description: "Raw customer data loaded in Databricks"
+        columns:
+          - name: id
+            description: "Unique customer identifier"
+            tests: 
+              - not_null
+              - unique
+      - name: raw_items # table name
+        description: "The table contains data related to product orders, specifically focusing on the unique identifiers for each order and the associated stock keeping units (SKUs). This data can be used for tracking order fulfillment, inventory management, and analyzing sales trends."
+        columns:
+          - name: id
+            description: "Unique customer identifier"
+            tests: 
+              - not_null
+              - unique
